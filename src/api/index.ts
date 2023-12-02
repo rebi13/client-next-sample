@@ -37,12 +37,12 @@ const apiRequest: fetchRequest = {
       const response = await fetch(`${API_URL}/${url}`, options);
 
       // 응답 코드가 4XX 계열일 때 (400, 403 등)
-      // if (!response.ok) {
-      //   const errorContent = await response.json();
-      //   const { errorMessage } = errorContent;
-      //   alert(errorMessage); // TODO: 제거 필요. 다른 방법으로 오류를 알릴 수 있어야 함.
-      //   throw new Error(errorMessage);
-      // }
+      if (!response.ok) {
+        const errorContent = await response.json();
+        const { errorMessage } = errorContent;
+        alert(errorMessage); // TODO: 제거 필요. 다른 방법으로 오류를 알릴 수 있어야 함.
+        throw new Error(errorMessage);
+      }
 
       const result = await response.json();
 
